@@ -88,3 +88,71 @@ The hard part is over and this offset does not have to be set again, even if you
     Buffers come in pre-made solutions or as a powder. I prefer the powder because it is cheaper and does not have an expiration date. The powder is easy to make up as well, I suppose it depends on the power you will use, the one I use you add the powder to 250ml distilled water and stir until all powder is dissolved. It will last about a month once you added water to it.
 
 ![](buffer-solution-powder-300x156.jpg)
+
+
+    A PH probe takes some time to get to the right value, allow it to be in the liquid you want to measure for at least two minutes or longer, it does not mean it will be stable at one ph value, it will jump around a bit between 3 or 4 values but on the last digit, for example,  between 6.84 – 6.88
+    PH values differ in different temperatures, although that might sound cumbersome, in the temperature range between 10 – 30 degrees Celcius the PH does not differ and from 30 degrees Celcius it goes up with about a pH of 0.01 to 50 degrees Celcius that is about 0.06. In most uses, it will be below 30 degrees Celcius and temperature do not have to be calculated in.
+
+Hook up your PH probe after you removed the wire you used to short-circuit the BNC connector and download the sketch below.
+
+# PH measurement sketch
+
+```
+float calibration = 0.00; //change this value to calibrate
+const int analogInPin = A0; 
+int sensorValue = 0; 
+unsigned long int avgValue; 
+float b;
+int buf[10],temp;
+void setup() {
+ Serial.begin(9600);
+}
+ 
+void loop() {
+ for(int i=0;i<10;i++) 
+ { 
+ buf[i]=analogRead(analogInPin);
+ delay(30);
+ }
+ for(int i=0;i<9;i++)
+ {
+ for(int j=i+1;j<10;j++)
+ {
+ if(buf[i]>buf[j])
+ {
+ temp=buf[i];
+ buf[i]=buf[j];
+ buf[j]=temp;
+ }
+ }
+ }
+ avgValue=0;
+ for(int i=2;i<8;i++)
+ avgValue+=buf[i];
+ float pHVol=(float)avgValue*5.0/1024/6;
+ float phValue = -5.70 * pHVol + calibration;
+ Serial.print("sensor = ");
+ Serial.println(phValue);
+ 
+ delay(500);
+}
+```
+
+A note on buffer solutions: do not CROSS CONTAMINATE! What I mean by this is to not take the probe from one buffer solution to another or from a liquid sample you tested to a buffer solution without rinsing it thoroughly with distilled water first. You will change your buffer solutions ph and your calibration will be off.
+
+When you place the probe in the first solution you might be surprised at how far off it can be, it’s normal though. Remember to leave the probe in the solution for at least two minutes to stabilise. In the script’s top line you will see a variable called “calibration”.  Change this value to the difference between what you see in serial monitor and the buffer solutions value, for example, if you read 5.81 and the buffer solution is 6.86 you should change the variable’s value to 2.05.
+
+## Upload the changed sketch and see how the value looks now.
+
+# Some ideas for you.
+
+You can add a potentiometer to your project and program that to change the calibration for you. You always run a risk that the pot might be adjusted my mistake so a button with a 5-second delay can be programmed to put the unit in calibration mode.
+This becomes great if you add an LCD screen to it and if you add the calibration value in EEPROM so it holds it even if the PH project is powered off.
+
+How about adding a buzzer to the 3.3V limit output to notify you when the PH is out of range. Usually an upper or lower will be enough, in most applications, you will either be worried about high or low PH values but not both. If this is a problem and you need the PH to be in a certain range you can easily do that programmatically and have the buzzer on a digital pin. If it is crucial you can even add a GSM module to this so you can get an SMS or how about a dosing pump to automatically get the PH back in range.
+
+I just might, but do not hold your breath (so much to do but so little time) :-), do something like that in the future with our cheap Skeleton Duino.
+
+## PH probe and sensor conclusion
+
+If you go through these steps once it becomes as easy as pie. All the parts, even those I mention in the ideas section is available on our site.
