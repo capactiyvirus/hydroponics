@@ -49,7 +49,7 @@ If you have a multimeter handy you can measure the value of the PO pin and adjus
 I prefer to just use the sketch below. Just download it to your Arduino as you will with any other sketch, open serial monitor and view the reading there. All this sketch does is to print the volts it receives from the analog pin and print it to the serial monitor. It of course first changes the digital value to volts to make it easier. Now simply turn the offset pot until it is exactly 2.5V. You can learn more about reading voltages and digital representation of volts here: [ardiuno voltage ](https://www.arduino.cc/en/Tutorial/ReadAnalogVoltage)
 
 # Offset sketch
-
+```
 void setup() {
  // initialize serial communication at 9600 bits per second:
  Serial.begin(9600);
@@ -65,7 +65,7 @@ void loop() {
  Serial.println(voltage);
  delay(300);
 }
-
+```
 # PH limit setting
 
 There is another pot that acts like a limit switch. Basically, the D0 pin on the sensor board will supply 3.3V to the pin until a preset PH value (that you set with the limit pot) is reached, at this point a red LED will light up and the pin will go down to about 0V.  I did not play with this much but suppose it can be handy if you want to activate a buzzer or something if a certain PH is reached, it will work great on an Arduino digital port – that will go high from about 2V up. This will work if the PH value goes higher than the set value. If you want it to trigger something when the PH goes lower, you need to monitor the digital pin to trigger when the digital pin goes low. You will unfortunately not be able to set this limit between two values, either if the pH goes up to high or if the PH drop to low. Programmatically you of cause can do an upper and lower limit.
