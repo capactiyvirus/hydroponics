@@ -164,7 +164,7 @@ If you go through these steps once it becomes as easy as pie. All the parts, eve
    - [Dallis Control Lib](https://github.com/milesburton/Arduino-Temperature-Control-Library)
    - [Temp Control](https://create.arduino.cc/projecthub/iotboys/how-to-use-ds18b20-water-proof-temperature-sensor-2adecc)
 
-## click me to watch vid
+## click image below to watch vid
 [![Watch the video for instructions](tempsens.png)](https://youtu.be/P0QnsXSjQ0Y)
 
 
