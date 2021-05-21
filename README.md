@@ -21,6 +21,7 @@ We will first look at the ph probe module board and then the PH probe because bo
     - PH probe usage
 
 ## The ph probe module in this tutorial is available on our site here: PH probe module BNC connector
+![image](Ph%20module.png)
 
  - PH Probe Sensor Pinout
  - TO – Temperature output
@@ -70,12 +71,20 @@ void loop() {
 
 There is another pot that acts like a limit switch. Basically, the D0 pin on the sensor board will supply 3.3V to the pin until a preset PH value (that you set with the limit pot) is reached, at this point a red LED will light up and the pin will go down to about 0V.  I did not play with this much but suppose it can be handy if you want to activate a buzzer or something if a certain PH is reached, it will work great on an Arduino digital port – that will go high from about 2V up. This will work if the PH value goes higher than the set value. If you want it to trigger something when the PH goes lower, you need to monitor the digital pin to trigger when the digital pin goes low. You will unfortunately not be able to set this limit between two values, either if the pH goes up to high or if the PH drop to low. Programmatically you of cause can do an upper and lower limit.
 
+![](185193020_1681520052043158_5468165722489757674_n.png)
+![](185768021_502924314283393_317081083157455671_n.jpg)
+
 ## Connecting and calibrating the PH probe.
 
 The hard part is over and this offset does not have to be set again, even if you change PH probes. We have PH probes available here: PH probe Electrode BNC connector
+
+![](ph-sensor-arduino-connection.jpg)
+![](ph-sensor-short-circuit.jpg)
 
 ## Here is a couple of things to know about PH probes:
 
     The probes readings change over time and need to be calibrated every now and again to make sure the value is still the same and be adjusted if it did change.
     You need at least one PH buffer solution to calibration your PH probe. They are available at many different PH values, A buffer solution of 6.86 and 4.01 is most common as it covers the range of most applications. If you are only going to use one buffer solution make sure its value is near the value range you will use in your normal tests – if it is pool water a buffer solution of 6.86 is usually near enough.
     Buffers come in pre-made solutions or as a powder. I prefer the powder because it is cheaper and does not have an expiration date. The powder is easy to make up as well, I suppose it depends on the power you will use, the one I use you add the powder to 250ml distilled water and stir until all powder is dissolved. It will last about a month once you added water to it.
+
+![](buffer-solution-powder-300x156.jpg)
