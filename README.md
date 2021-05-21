@@ -156,3 +156,12 @@ I just might, but do not hold your breath (so much to do but so little time) :-)
 ## PH probe and sensor conclusion
 
 If you go through these steps once it becomes as easy as pie. All the parts, even those I mention in the ideas section is available on our site.
+
+
+# For Temp Sensor
+[OneWire](https://github.com/PaulStoffregen/OneWire)
+[Dallis Control Lib](https://github.com/milesburton/Arduino-Temperature-Control-Library)
+
+[Temp Control](https://create.arduino.cc/projecthub/iotboys/how-to-use-ds18b20-water-proof-temperature-sensor-2adecc)
+
+
