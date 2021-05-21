@@ -159,9 +159,8 @@ If you go through these steps once it becomes as easy as pie. All the parts, eve
 
 
 # For Temp Sensor
-[OneWire](https://github.com/PaulStoffregen/OneWire)
-[Dallis Control Lib](https://github.com/milesburton/Arduino-Temperature-Control-Library)
-
-[Temp Control](https://create.arduino.cc/projecthub/iotboys/how-to-use-ds18b20-water-proof-temperature-sensor-2adecc)
+    - [OneWire](https://github.com/PaulStoffregen/OneWire)
+    - [Dallis Control Lib](https://github.com/milesburton/Arduino-Temperature-Control-Library)
+    - [Temp Control](https://create.arduino.cc/projecthub/iotboys/how-to-use-ds18b20-water-proof-temperature-sensor-2adecc)
 
 
